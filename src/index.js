@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import { BrowserRouter } from "react-router-dom";
 
-const app = (
-  <div>
-    <h1>Hello World</h1>
-  </div>
-)
+import AppRouter from './routers/AppRouter'
 
-ReactDom.render(app, document.getElementById('root'));
+
+ReactDom.render(
+  <BrowserRouter>
+    <AppRouter />
+  </BrowserRouter>,
+  document.getElementById('root')
+  );
