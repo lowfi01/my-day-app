@@ -4,20 +4,13 @@ import { createBrowserHistory  } from 'history';
 
 export const history = createBrowserHistory();
 
-function Index() {
+const Index = () => {
   return <h2>Home</h2>;
 }
 
-function About() {
+const About = () => {
   return <h2>About</h2>;
 }
-
-
-// const Index = () =>  <h2>Home</h2>;
-
-// const About = () => {
-//   return <h2>About</h2>;
-// }
 
 function AppRouter() {
   return (
