@@ -1,5 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Router, Route, Switch, Link } from 'react-router-dom';
+import { createBrowserHistory  } from 'history';
+
+export const history = createBrowserHistory();
 
 function Index() {
   return <h2>Home</h2>;
@@ -18,7 +21,7 @@ function About() {
 
 function AppRouter() {
   return (
-    <Router>
+    <Router history={history}>
       <div>
         <nav>
           <ul>
@@ -30,12 +33,15 @@ function AppRouter() {
             </li>
           </ul>
         </nav>
-
+        <Switch>
         <Route path="/" exact component={Index} />
         <Route path="/about/" component={About} />
+        </Switch>
       </div>
     </Router>
   );
 }
 
 export default AppRouter;
+
+
