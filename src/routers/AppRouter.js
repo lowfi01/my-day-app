@@ -1,12 +1,14 @@
 import React from 'react';
-import { Router, Route, Switch, Link } from 'react-router-dom';
 import { createBrowserHistory  } from 'history';
+import { Router, Route, Switch, Link } from 'react-router-dom';
+
+import ActivityForm from '../components/ActivityForm'
 
 export const history = createBrowserHistory();
 
-const Index = () => {
-  return <h2>Home</h2>;
-}
+// const Index = () => {
+//   return <h2>Home</h2>;
+// }
 
 const About = () => {
   return <h2>About</h2>;
@@ -27,7 +29,7 @@ function AppRouter() {
           </ul>
         </nav>
         <Switch>
-        <Route path="/" exact component={Index} />
+        <Route path="/" exact component={ActivityForm} />
         <Route path="/about/" component={About} />
         </Switch>
       </div>
