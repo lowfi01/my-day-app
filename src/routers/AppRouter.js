@@ -2,7 +2,7 @@ import React from 'react';
 import { createBrowserHistory  } from 'history';
 import { Router, Route, Switch, Link } from 'react-router-dom';
 
-import ActivityForm from '../components/ActivityForm'
+import AddActivity from '../components/activity/AddActivity'
 
 export const history = createBrowserHistory();
 
@@ -29,7 +29,7 @@ function AppRouter() {
           </ul>
         </nav>
         <Switch>
-        <Route path="/" exact component={ActivityForm} />
+        <Route path="/" exact component={AddActivity} />
         <Route path="/about/" component={About} />
         </Switch>
       </div>
