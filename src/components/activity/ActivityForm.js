@@ -4,9 +4,14 @@
     //  - Add better mood choices
     //  - Add implementation for date / time either here or in redux actions?
     //  - implement
-    //  - Add PropType
+
 
 import React from 'react';
+import PropTypes from 'prop-types';
+
+// PropTypes
+// - onSubmit - func.isRequired
+
 
 class ActivityForm extends React.Component{
   constructor(props){
@@ -14,7 +19,7 @@ class ActivityForm extends React.Component{
 
     this.state = {
       activity: '',
-      mood: '',
+      mood: 'normal',
       description: ''
     }
   }
@@ -49,14 +54,19 @@ class ActivityForm extends React.Component{
       error.activty = 'activity must be a string not a number and cannot be left blank!';
     }
 
+    // Mood currently filters nothing, as default is not longer empty string.
     if( mood === '' ) {
       error.activty = 'Select a mood!';
     }
 
     if( Object.keys(error).length === 0 ) {
+      console.log("Hello")
       this.props.onSubmit({
-        ...this.state
+        ...this.state,
+        date: new Date()
       });
+    } else {
+      console.log(error)
     }
 
 
@@ -107,5 +117,10 @@ class ActivityForm extends React.Component{
     )
   }
 }
+
+ActivityForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired
+}
+
 
 export default ActivityForm;

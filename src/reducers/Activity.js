@@ -7,6 +7,7 @@ const activityDefaultState = [{
     type: "Sleeping",
     state: "Sleepy",
     pain: 5,
+    date: "2019-08-26T17:35:00.796Z"
   }]
 
 const activityReducer = (state = activityDefaultState, action) => {
