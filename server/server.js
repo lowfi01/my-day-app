@@ -7,7 +7,8 @@ const express = require('express');
 const path = require('path');
 
 const {mongoose} = require('./mongoose/Mongoose');
-const  { addActivity } = require('./api/ActivityRoutes');
+const  { addActivity, getActivity } = require('./api/ActivityRoutes');
+const  {Activity} = require('./schema/ActivitySchema')
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -16,6 +17,7 @@ app.use(express.static(path.join(__dirname,'../' , 'build')));
 app.use(bodyParser.json());
 
 // routes
+app.get('/api/activity', getActivity);
 app.post('/api/activity', addActivity);
 
 app.get('*', function (req, res) {
