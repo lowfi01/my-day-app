@@ -1,11 +1,22 @@
 // # Below is examples of promises used with both standard .then() and async / await
 const { Activity } = require('../schema/ActivitySchema');
 
+const removeActivity = async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const activity = await Activity.deleteOne({_id: req.params.id}).exec();
+    console.log(activity);
+    res.send(activity);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+}
+
+
 // Async / Await method
 const getActivity = async (req, res) => {
   try {
-    const activity = await Activity.find();
-      //const activity = await Activity.find().exec();  // .exec() should return a promise but newest mongoose now return by default.
+    const activity = await Activity.find().exec();
     console.log(activity);
     res.send(activity);
   } catch (error) {
@@ -31,7 +42,7 @@ const addActivity = async (req, res) => {
 }
 
 module.exports = {
-  addActivity, getActivity
+  addActivity, getActivity, removeActivity
 }
 
 // Classic .then() promise method

@@ -7,7 +7,7 @@ const express = require('express');
 const path = require('path');
 
 const {mongoose} = require('./mongoose/Mongoose');
-const  { addActivity, getActivity } = require('./api/ActivityRoutes');
+const  { addActivity, getActivity, removeActivity } = require('./api/ActivityRoutes');
 const  {Activity} = require('./schema/ActivitySchema')
 
 const app = express();
@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 // routes
 app.get('/api/activity', getActivity);
 app.post('/api/activity', addActivity);
+app.delete('/api/activity/:id', removeActivity);
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(publicPath, '../' , 'build', 'index.html'))
