@@ -1,11 +1,26 @@
 // # Below is examples of promises used with both standard .then() and async / await
 const { Activity } = require('../schema/ActivitySchema');
 
+const editActivity = async (req, res) => {
+  const {activity, description, mood, energy, date } = req.body;
+  const query = {_id: req.params.id};
+  const update = { $set: { activity, description, mood, energy, date } };
+  const options = { new: true };
+
+  try {
+    const editedActivity = await Activity.findOneAndUpdate(query, update, options).exec();
+    console.log("activity edited: ", editedActivity);
+    res.send(editedActivity);
+  } catch (err) {
+    res.status(400).send(err);
+  }
+}
+
 const removeActivity = async (req, res) => {
   console.log(req.params.id);
   try {
     const activity = await Activity.deleteOne({_id: req.params.id}).exec();
-    console.log(activity);
+    console.log("activity has been removed: ", activity);
     res.send(activity);
   } catch (error) {
     res.status(400).send(error);
@@ -42,7 +57,7 @@ const addActivity = async (req, res) => {
 }
 
 module.exports = {
-  addActivity, getActivity, removeActivity
+  addActivity, getActivity, removeActivity, editActivity
 }
 
 // Classic .then() promise method
