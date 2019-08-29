@@ -9,6 +9,8 @@
     "moment": "2.24.0",
     "mongodb": "3.3.1",
     "mongoose": "5.6.11",
+    "morgan": "^1.9.1",
+    "morgan-body": "^2.4.7",
     "nodemon": "^1.19.1",
     "prop-types": "15.7.2",
     "react": "16.9.0",

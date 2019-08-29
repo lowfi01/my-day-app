@@ -9,7 +9,7 @@ const editActivity = async (req, res) => {
 
   try {
     const editedActivity = await Activity.findOneAndUpdate(query, update, options).exec();
-    console.log("activity edited: ", editedActivity);
+    // console.log("activity edited: ", editedActivity);
     res.send(editedActivity);
   } catch (err) {
     res.status(400).send(err);
@@ -19,8 +19,8 @@ const editActivity = async (req, res) => {
 const removeActivity = async (req, res) => {
   console.log(req.params.id);
   try {
-    const activity = await Activity.deleteOne({_id: req.params.id}).exec();
-    console.log("activity has been removed: ", activity);
+    const activity = await Activity.findByIdAndRemove({_id: req.params.id}).exec();
+    // console.log("activity has been removed: ", activity);
     res.send(activity);
   } catch (error) {
     res.status(400).send(error);
@@ -32,7 +32,7 @@ const removeActivity = async (req, res) => {
 const getActivity = async (req, res) => {
   try {
     const activity = await Activity.find().exec();
-    console.log(activity);
+    // console.log(activity);
     res.send(activity);
   } catch (error) {
     res.status(400).send(err);
@@ -49,7 +49,7 @@ const addActivity = async (req, res) => {
       date: req.body.date,
       energy: req.body.energy
     }).save();
-    console.log(activity);
+    // console.log(activity);
     res.send(activity)
   } catch (err){
     res.status(400).send(err);
