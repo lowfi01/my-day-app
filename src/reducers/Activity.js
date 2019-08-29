@@ -4,9 +4,10 @@
 // - add remove action
 
 const activityDefaultState = [{
-    type: "Sleeping",
-    state: "Sleepy",
+    activity: "Sleeping",
+    mood: "Sleepy",
     pain: 5,
+    description: 'some random textfor default state',
     date: "2019-08-26T17:35:00.796Z"
   }]
 
