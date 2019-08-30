@@ -20,7 +20,8 @@ class ActivityForm extends React.Component{
     this.state = {
       activity: '',
       mood: 'normal',
-      description: ''
+      description: '',
+      energy: ''
     }
   }
 
@@ -38,6 +39,12 @@ class ActivityForm extends React.Component{
   descriptionChange = (e) => {
     let description = e.target.value;
     this.setState(() => ({description}));
+  }
+
+
+  energyChange = (e) => {
+    let energy = e.target.value;
+    this.setState(() => ({energy}));
   }
 
   onSubmit = (e) => {
@@ -84,6 +91,13 @@ class ActivityForm extends React.Component{
           value={this.state.activity}
           onChange={this.activityChange}
           placeholder="activity eg... Gym, Sleeping.."
+          />
+
+        <input
+          type="text"
+          value={this.state.energy}
+          onChange={this.energyChange}
+          placeholder="energy placeholder"
           />
 
         <select

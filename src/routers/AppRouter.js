@@ -2,7 +2,7 @@ import React from 'react';
 import { createBrowserHistory  } from 'history';
 import { Router, Route, Switch, Link } from 'react-router-dom';
 
-import AddActivity from '../components/activity/AddActivity'
+import Dashboard from '../components/dashboard/Dashboard'
 
 export const history = createBrowserHistory();
 
@@ -29,7 +29,7 @@ function AppRouter() {
           </ul>
         </nav>
         <Switch>
-        <Route path="/" exact component={AddActivity} />
+        <Route path="/" exact component={Dashboard} />
         <Route path="/about/" component={About} />
         </Switch>
       </div>

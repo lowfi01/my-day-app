@@ -1,14 +1,4 @@
 // #TODO
-// Add logger functionaility to view requests / responses to our express server easier.
-// - Test using either morgan or morganBody
-// https://stackoverflow.com/questions/51409771/logging-post-body-size-using-morgan-when-request-is-received/51410767
-// https://vivia.readthedocs.io/en/latest/node_modules/morgan/README/
-// https://www.npmjs.com/package/morgan-body
-// https://www.npmjs.com/package/morgan
-//
-// Create new Branch called - Basic CRUD operations.
-// Push Branch to GITHUB
-// Merge to Master
 // - MOVE TO GUI - TODO LIST FOUND IN index.js
 // ADD AUTH
 // Create BRANCH WHEN DEVELOPED

@@ -4,6 +4,7 @@
 // - add remove action
 
 const activityDefaultState = [{
+    _id: "1",
     activity: "Sleeping",
     mood: "Sleepy",
     pain: 5,
