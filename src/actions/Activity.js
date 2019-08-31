@@ -1,6 +1,6 @@
 import api from '../api';
 
-const { add } = api.activities;
+const { add, get } = api.activities;
 
 // use redux-thunk to add to db & fetch id
 export const startAddActivity = (activity = {}) => {
@@ -21,4 +21,22 @@ export const addActivity = (activity) => ({
 })
 
 
+export const startGetActivities = () => {
+  return async (dispatch, getState) => {
+    try {
+      const fetchedActivities = await get(); // resolve promise
+      dispatch(getActivity(fetchedActivities.data));
+      return true; // cancel out of loading screen
+    } catch (error) {
+      console.log("unable to resolve promise startGetActivities: ", error);
+      return false; // loading screen if false
+    }
+  }
+}
+
+
+export const getActivity = (activities) => ({
+  type: 'GET_ACTIVITY',
+  activities
+})
 
