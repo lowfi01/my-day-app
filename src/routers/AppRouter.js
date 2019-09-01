@@ -3,6 +3,7 @@ import { createBrowserHistory  } from 'history';
 import { Router, Route, Switch, Link } from 'react-router-dom';
 
 import Dashboard from '../components/dashboard/Dashboard'
+import EditActivity from '../components/activity/EditActivity'
 
 export const history = createBrowserHistory();
 
@@ -10,9 +11,9 @@ export const history = createBrowserHistory();
 //   return <h2>Home</h2>;
 // }
 
-const About = () => {
-  return <h2>About</h2>;
-}
+// const About = () => {
+//   return <h2>About</h2>;
+// }
 
 function AppRouter() {
   return (
@@ -30,7 +31,7 @@ function AppRouter() {
         </nav>
         <Switch>
         <Route path="/" exact component={Dashboard} />
-        <Route path="/about/" component={About} />
+        <Route path="/edit/:id" component={EditActivity} />
         </Switch>
       </div>
     </Router>

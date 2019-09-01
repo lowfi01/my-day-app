@@ -1,6 +1,41 @@
 import api from '../api';
 
-const { add, get } = api.activities;
+const { add, get, edit, remove } = api.activities;
+
+// #TODO -- EDIT ACITIVITY
+export const startDeleteActivity = (id) => {
+  return async (dispatch, getState) => {
+    await remove(id);
+    dispatch(deleteActivity(id));
+  }
+}
+
+export const deleteActivity = (id) => ({
+  type: "DELETE_ACTIVITY",
+  id
+})
+
+
+
+export const startEditActivity = (activity = {}) => {
+  return async (dispatch, getState) => {
+    try {
+      const editedActivity = await edit(activity);  // resolve promise
+      dispatch(editActivity(editedActivity.data));  // result contains data object
+    } catch (error) {
+      console.log("unable to resolve promise startEditActivity: ", error);
+    }
+  }
+}
+
+
+// edit acitivity
+export const editActivity = (activity) => {
+  return {
+    type: 'EDIT_ACTIVITY',
+    activity
+  }
+}
 
 // use redux-thunk to add to db & fetch id
 export const startAddActivity = (activity = {}) => {

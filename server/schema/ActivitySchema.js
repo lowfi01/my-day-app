@@ -3,12 +3,12 @@ var mongoose = require('mongoose');
 var Activity = mongoose.model('Activity', {
   activity: {
     type: String,
-    required: [ true, 'activity is required ' ],
+    required: [ true, 'Activity is required ' ],
     trim: true
   },
   description: {
     type: String,
-    required: [ true, 'Mood is required ' ],
+    required: [ true, 'description is required ' ],
     trim: true
   },
   mood: {
@@ -19,6 +19,14 @@ var Activity = mongoose.model('Activity', {
   energy: {
     type: String,
     required: [ true, 'Energy input is required ' ]
+  },
+  pain: {
+    type: String,
+    required: [ true, 'Pain input is required ' ]
+  },
+  clarity: {
+    type: String,
+    required: [ true, 'Clarity input is required ' ]
   },
   date: {
     type: String,

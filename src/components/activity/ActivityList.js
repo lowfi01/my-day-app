@@ -4,11 +4,15 @@ import { connect } from 'react-redux';
 
 import ActivityListItem from './ActivityListItem';
 
+// PropsTypes
+// - activities prop derives from redux store
+
+
 const ActivityList = (props) => {
 
   return (
     <>
-      <p>Hello World!</p>
+    <h1>DashBoard List of Activities</h1>
       {
         props.activities.map((action) => (
           <ActivityListItem key={action._id} action={action} />

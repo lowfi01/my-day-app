@@ -1,9 +1,5 @@
  // #TODO
-    //  - improve form validation with sql checking
-    //  - imrpove form validation for checking moods
-    //  - Add better mood choices
-    //  - Add implementation for date / time either here or in redux actions?
-    //  - implement
+    //  - improve form validation with regex checking
 
 
 import React from 'react';
@@ -11,17 +7,21 @@ import PropTypes from 'prop-types';
 
 // PropTypes
 // - onSubmit - func.isRequired
+// - activty - activity.Object
 
 
 class ActivityForm extends React.Component{
   constructor(props){
     super(props)
-
+    console.log(props.activity)
     this.state = {
-      activity: '',
-      mood: 'normal',
-      description: '',
-      energy: ''
+      activity: props.activity ? props.activity.activity : '',
+      mood: props.activity ? props.activity.mood : 'pleasent',
+      description: props.activity ? props.activity.description : '',
+      energy: props.activity ? props.activity.energy : '5',
+      clarity: props.activity ? props.activity.clarity : '5',
+      pain: props.activity ? props.activity.pain : '1',
+      _id: props.activity ? props.activity._id : ''
     }
   }
 
@@ -46,6 +46,18 @@ class ActivityForm extends React.Component{
     let energy = e.target.value;
     this.setState(() => ({energy}));
   }
+
+  painChange = (e) => {
+    let pain = e.target.value;
+    this.setState(() => ({pain}));
+  }
+
+
+  clarityChange = (e) => {
+    let clarity = e.target.value;
+    this.setState(() => ({clarity}));
+  }
+
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -86,32 +98,93 @@ class ActivityForm extends React.Component{
         onSubmit={this.onSubmit}
         >
 
+        <label htmlFor="activity-text">activity</label>
         <input
+          id="activity"
           type="text"
           value={this.state.activity}
           onChange={this.activityChange}
-          placeholder="activity eg... Gym, Sleeping.."
-          />
+          placeholder="Gym, Sleep, Meal, Class, Lecture ..."
+        />
 
-        <input
+        <label htmlFor="clarity-select">clarity</label>
+        <select
+          id="clarity"
+          type="text"
+          value={this.state.clarity}
+          onChange={this.clarityChange}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+
+        </select>
+
+        <label htmlFor="pain-select">pain</label>
+        <select
+          id="pain-select"
+          type="text"
+          value={this.state.pain}
+          onChange={this.painChange}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+
+
+        <label htmlFor="energy-select">energy</label>
+        <select
+          id="energy-select"
           type="text"
           value={this.state.energy}
           onChange={this.energyChange}
-          placeholder="energy placeholder"
-          />
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
 
+        <label htmlFor="mood-select">mood</label>
         <select
+          id="mood-select"
           type="text"
           value={this.state.mood}
           onChange={this.moodChange}
           >
-            <option value="exhausted">exhausted</option>
-            <option value="tired">tired</option>
-            <option value="normal">normal</option>
+            <option value="tense">tense</option>
+            <option value="nervous">nervous</option>
+            <option value="stressed">stressed</option>
+            <option value="upset">upset</option>
+            <option value="unpleasent">unpleasent</option>
             <option value="sad">sad</option>
-            <option value="depressed">despressed</option>
+            <option value="depressed">depressed</option>
+            <option value="bored">bored</option>
+            <option value="fatigued">fatigued</option>
+            <option value="calm">calm</option>
+            <option value="relaxed">relaxed</option>
+            <option value="contented">contented</option>
+            <option value="pleasent">pleasent</option>
             <option value="happy">happy</option>
-            <option value="joyess">joyess</option>
+            <option value="elated">elated</option>
+            <option value="excited">excited</option>
+            <option value="alert">alert</option>
         </select>
 
         <textarea
@@ -133,7 +206,8 @@ class ActivityForm extends React.Component{
 }
 
 ActivityForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  activity: PropTypes.object
 }
 
 

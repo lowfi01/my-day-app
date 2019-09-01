@@ -19,6 +19,22 @@ export default {
       } catch (error) {
         console.log("Get activities axios error: ", error);
       }
+    },
+    edit: async (activity) => {
+      try {
+        const editActivityResult = await axios.put(`/api/activity/${activity._id}`, {...activity});
+        return editActivityResult;
+      } catch (error) {
+        console.log("Edit activity axios error: ", error);
+      }
+    },
+    remove: async (id) => {
+      try {
+        await axios.delete(`/api/activity/${id}`);
+      } catch (error) {
+        console.log("Delete activity axios error: ", error);
+      }
     }
+
   }
 }

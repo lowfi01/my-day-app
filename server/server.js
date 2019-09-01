@@ -5,13 +5,10 @@
 // ADD OAUTH
 // CREATE BRANCH WHEN DEVLEOPED
 
-
-
 const bodyParser = require('body-parser');
 const express = require('express');
 const path = require('path');
 const morganBody = require('morgan-body'); // REMOVE IN PRODUCTION BUILD
-
 
 const {mongoose} = require('./mongoose/Mongoose');
 const  { addActivity, getActivity, removeActivity, editActivity } = require('./api/ActivityRoutes');
@@ -46,4 +43,3 @@ app.listen(port, () => {
 
 // Documentation to allow for express to run with create reate app
 // https://dev.to/loujaybee/using-create-react-app-with-express
-

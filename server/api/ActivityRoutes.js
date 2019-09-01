@@ -2,7 +2,7 @@
 const { Activity } = require('../schema/ActivitySchema');
 
 const editActivity = async (req, res) => {
-  const {activity, description, mood, energy, date } = req.body;
+  const {activity, description, mood, energy, pain, clarity, date } = req.body;
   const query = {_id: req.params.id};
   const update = { $set: { activity, description, mood, energy, date } };
   const options = { new: true };
@@ -46,6 +46,8 @@ const addActivity = async (req, res) => {
       activity: req.body.activity,
       description: req.body.description,
       mood: req.body.mood,
+      pain: req.body.pain,
+      clarity: req.body.clarity,
       date: req.body.date,
       energy: req.body.energy
     }).save();
